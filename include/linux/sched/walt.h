@@ -32,8 +32,12 @@ enum pause_client {
 #define BALANCE_BOOST_DISABLE -5
 #define MAX_NUM_BOOST_TYPE (BALANCE_BOOST+1)
 
-#if IS_ENABLED(CONFIG_SCHED_WALT)
-
+/*
+ * The data definitions below (struct walt_task_struct and its dependencies)
+ * are intentionally NOT guarded by CONFIG_SCHED_WALT: hung_task_enh and
+ * cpu_mpam keep per-task state in the android_task_vendor_data() slot using
+ * this layout, and must still build and behave identically with WALT off.
+ */
 #define MAX_CPUS_PER_CLUSTER 6
 #define MAX_CLUSTERS 4
 
@@ -182,6 +186,8 @@ struct walt_task_struct {
 	 */
 	u64				sf_misfit_time;
 };
+
+#if IS_ENABLED(CONFIG_SCHED_WALT)
 
 #define wts_to_ts(wts) ({ \
 		void *__mptr = (void *)(wts); \

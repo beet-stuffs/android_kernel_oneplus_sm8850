@@ -374,7 +374,7 @@ canoe_perf_config = {
     "CONFIG_RPROC_SYSMON_NOTIF_TIMEOUT": "20000",
     "CONFIG_RTC_DRV_PM8XXX": "m",
     "CONFIG_RTL8723BS": "n",
-    "CONFIG_SCHED_WALT": "m",
+    "CONFIG_SCHED_WALT": "n",
     "CONFIG_SCHED_WALT_DEBUG": "n",
     "CONFIG_SCHED_WALT_STATS": "n",
     "CONFIG_SCSI_UFS_CRYPTO_QTI": "m",
